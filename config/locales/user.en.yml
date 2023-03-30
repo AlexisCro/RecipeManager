@@ -1,0 +1,11 @@
+en:
+  register: 
+    register: Register
+  mailer: 
+    subject: Your subscription on RecipeManager
+    confirm_message: Thanks for your subscription, you would receive an email to confirm your subscription
+    invalid_token: It seems that your token is invalid please try to subscribe
+  navbar:
+    title: Recipe Manager
+    login: Log In
+    signin: Sign In
