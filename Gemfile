@@ -33,6 +33,9 @@ gem 'simple_form'
 # translation 
 gem 'i18n'
 
+# Use bootstrap
+gem 'bootstrap', '~> 5.1.3'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
