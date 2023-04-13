@@ -1,39 +1,42 @@
 <% if @user.errors.any? %>
     <div class='alert alert-danger'>
         <ul>
-            <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+            <% @user.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
             <% end %>
         </ul>
     </div>
 <% end %>
-
-    <div class='d-flex justify-content-center align-items-center' style="height: 80vh;">
-        <div class='card-custom' style="width:40%;">
-            <div class='border-top-radius card-header  text-center' style="background-color:#4a7de9; color:white; border-radius: 15px 15px 0 0;">
-                <h2><%= t('register.register') %></h2>      
-            </div>
-            <div class='card-body-custom d-flex justify-content-center glassmorphism' style='border-radius: 0 0 15px 15px; color:white'>
-                <%= simple_form_for @user, class: 'form-horizontal' do |f| %>
-                    <div class='input-group mb-3'>
-                        <%= f.input :username, input_html: { class: 'form-control' } %>
-                    </div>
-                    <div class='input-group mb-3'>
-                        <%= f.input :mail, input_html: { class: 'form-control' } %>
-                    </div>
-                    <div class='input-group mb-3'>
-                        <%= f.input :firstname, input_html: { class: 'form-control' } %>
-                    </div>
-                    <div class='input-group mb-3'>
-                        <%= f.input :lastname, input_html: { class: 'form-control' } %>
-                    </div>
-                    <div class='input-group mb-3'>
-                        <%= f.input :password, input_html: { class: 'form-control' } %>
-                    </div>
-                    <div class='input-group mb-3 d-flex justify-content-center'>
-                        <%= f.button :submit,  class: 'btn btn-primary mt-2' %>                        
-                    </div>
-                <% end %>
-            </div>
+    
+<div class='d-flex justify-content-center align-items-center'>
+    <div class='card-custom w-75'>
+        <div class='border-top-radius card-header  text-center' style="background-color:#4a7de9; color:white; border-radius: 15px 15px 0 0;">
+            <h2><%= t('register.register') %></h2>      
+        </div>
+        <div class='card-body-custom d-flex justify-content-center glassmorphism' style='border-radius: 0 0 15px 15px; color:white'>
+            <%= simple_form_for @user, class: 'form-horizontal' do |f| %>
+                <div class='input-group mb-3'>
+                    <%= f.input :username, input_html: { class: 'form-control', required: true } %>
+                </div>
+                <div class='input-group mb-3'>
+                    <%= f.input :mail, input_html: { class: 'form-control', required: true } %>
+                </div>
+                <div class='input-group mb-3'>
+                    <%= f.input :firstname, input_html: { class: 'form-control', required: true } %>
+                </div>
+                <div class='input-group mb-3'>
+                    <%= f.input :lastname, input_html: { class: 'form-control', required: true } %>
+                </div>
+                <div class='input-group mb-3'>
+                    <%= f.input :password, input_html: { class: 'form-control', required: true } %>
+                </div>
+                <div class='input-group mb-3'>
+                    <%= f.input :password_confirmation, input_html: { class: 'form-control', required: true } %>
+                </div>
+                <div class='input-group mb-3 d-flex justify-content-center'>
+                    <%= f.button :submit,  class: 'btn btn-primary mt-2' %>                        
+                </div>
+            <% end %>
         </div>
     </div>
+</div>

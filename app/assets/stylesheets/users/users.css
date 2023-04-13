@@ -21,7 +21,7 @@ body {
 
 /****** Navbar *******/
 
-.logo-name a {
+.logo-name {
     text-decoration: none;
     font-family: "Pacifico", cursive;
     color: white;
@@ -32,10 +32,11 @@ body {
     margin: 0;
 }
 
-.list-menu li {
+.list-menu-choice {
     list-style: none;
     color: white;
     font-size: 25px;
     margin-left: 1rem;
     margin-right: 1rem;
+    text-decoration: none;
 }
