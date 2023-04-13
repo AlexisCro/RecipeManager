@@ -9,3 +9,9 @@ en:
     title: Recipe Manager
     login: Log In
     signin: Sign In
+    signout: Sign Out
+  edit:
+    profil: Manage your profil
+    update: Update
+    success: Your profile has updated
+    danger: Something wrong
