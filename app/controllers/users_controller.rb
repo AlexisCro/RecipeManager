@@ -49,6 +49,6 @@ class UsersController < ApplicationController
     private
 
     def update_params
-        params.require(:user)[:password].blank? ? params.require(:user).permit %i[mail firstname lastname] : params.require(:user).permit(User::UPDATE_PARAMS)
+        params.require(:user)[:password].blank? ? params.require(:user).permit([:mail, :firstname, :lastname]) : params.require(:user).permit(User::UPDATE_PARAMS)
     end
 end
