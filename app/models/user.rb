@@ -20,4 +20,8 @@ class User < ApplicationRecord
     def to_session
         {id: id}
     end
+
+    def full_name
+        return "#{firstname} #{lastname}"
+    end
 end

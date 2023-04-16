@@ -9,8 +9,9 @@ en:
     title: Recipe Manager
     login: Log In
     signin: Sign In
-    signout: Sign Out
+    logout: Logout
   edit:
+    setting: Profil
     profil: Manage your profil
     update: Update
     success: Your profile has updated

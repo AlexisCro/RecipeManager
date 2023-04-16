@@ -1,7 +1,7 @@
 <div class='d-flex justify-content-center align-items-center'>
     <div class='card text-center'>
         <div class='card-header'>
-            <h2><%= t('edit.profil') %> <%= @user.username %></h2>
+            <h2><%= t('edit.profil') %> <%= @current_user.full_name %></h2>
         </div>
         <div class='card-body'>
             <%= simple_form_for :user, defaults: { required: false } do |f| %>

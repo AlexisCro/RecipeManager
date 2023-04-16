@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :sessions, only: %i[new create destroy] 
+  #Session CRUD
+  get '/login', to: 'sessions#new', as: :new_session
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy', as: :destroy_session
 
 end
