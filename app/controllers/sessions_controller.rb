@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
-    skip_before_action :only_signed_in, only: %i[new create] 
+    skip_before_action :only_signed_in, only: %i[new create]
+    before_action :only_signed_out, only: %i[new create] 
 
     def new
     end
