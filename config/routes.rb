@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/profil', to: 'users#edit', as: :profil
   post '/profil', to: 'users#update'
 
-  resources :password, only: %i[new create edit update]
+  resources :passwords, only: %i[new create edit update]
 
   # Session CRUD
   get '/login', to: 'sessions#new', as: :new_session

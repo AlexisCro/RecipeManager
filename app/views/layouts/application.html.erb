@@ -11,9 +11,9 @@
   </head>
   <body>
     <% if @current_user.nil? %>
-      <%= render partial: "users/shared/navbar_new" %>
+      <%= render partial: "layouts/shared/navbar_new" %>
     <% else %>
-      <%= render partial: "users/shared/navbar_signin" %>
+      <%= render partial: "layouts/shared/navbar_signin" %>
     <% end %>
 
     <% if flash[:success] %>

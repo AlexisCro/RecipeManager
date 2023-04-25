@@ -14,6 +14,9 @@
                 <div class='input-group mb-3 d-flex justify-content-center'>
                     <%= f.button :submit, t('form.connection'),  class: 'btn btn-primary mt-2' %>                        
                 </div>
+                <div class='btn btn-light d-flex justify-content-center'>
+                    <%= link_to t('forget_pass'), new_password_path, class: 'text-decoration-none' %>
+                </div>
             <% end %>
         </div>
     </div>
