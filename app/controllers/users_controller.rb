@@ -41,6 +41,8 @@ class UsersController < ApplicationController
         if @user.confirmation_token == params[:token]
             @user.update(is_confirmed: true, confirmation_token: nil)
             @user.save(validates: false)
+            cookbook = Cookbook.new(title: "My cookbook", user_id: @user.id)
+            cookbook.save
             session[:auth] = {id: @user.id}
             redirect_to profil_path
         else

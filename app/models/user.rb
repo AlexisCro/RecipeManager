@@ -16,6 +16,8 @@ class User < ApplicationRecord
         uniqueness: { case_sensitive: false },
         on: %i[create]
 
+    has_one :cookbook
+
     UPDATE_PARAMS = %i[mail lastname firstname password password_confirmation]
 
     def to_session
