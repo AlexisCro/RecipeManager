@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
     has_secure_password
     has_secure_token :confirmation_token
+    has_secure_token :recover_password_token
 
     validates :firstname, presence: true
     validates :lastname, presence: true

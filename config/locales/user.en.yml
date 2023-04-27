@@ -5,6 +5,7 @@ en:
     subject: Your subscription on RecipeManager
     confirm_message: Thanks for your subscription, you would receive an email to confirm your subscription
     invalid_token: It seems that your token is invalid please try to subscribe
+    recover_password: Recover your password
   navbar:
     title: Recipe Manager
     login: Log In
