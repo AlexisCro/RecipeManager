@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     def create
         user_params = params.require(:user).permit %i[username mail firstname lastname password password_confirmation]
         @user = User.new(user_params)
-        @user.recover_password = nil
+        @user.recover_password_token = nil
         if @user.valid?
             @user.save
             UserMailer.confirm(@user).deliver_now
@@ -37,10 +37,12 @@ class UsersController < ApplicationController
     end
 
     def confirm
-        @user = user.find(params[:id])
+        @user = User.find(params[:id])
         if @user.confirmation_token == params[:token]
             @user.update(is_confirmed: true, confirmation_token: nil)
             @user.save(validates: false)
+            cookbook = Cookbook.new(title: "My cookbook", user_id: @user.id)
+            cookbook.save
             session[:auth] = {id: @user.id}
             redirect_to profil_path
         else
