@@ -10,13 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_124541) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_28_074726) do
   create_table "cookbooks", force: :cascade do |t|
     t.string "title", default: "My cookbook", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cookbooks_on_user_id", unique: true
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "kind", default: 0, null: false
+    t.json "ingredients", default: {}, null: false
+    t.boolean "is_vegetarian", default: false, null: false
+    t.boolean "is_vegan", default: false, null: false
+    t.boolean "is_kids_friendly", default: false, null: false
+    t.integer "cookbook_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cookbook_id"], name: "index_recipes_on_cookbook_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -21,4 +21,7 @@ Rails.application.routes.draw do
 
   # Cookbook CRUD
   resources :cookbooks, only: %i[index show edit update]
+
+  # Recipe CRUD
+  resources :recipes
 end

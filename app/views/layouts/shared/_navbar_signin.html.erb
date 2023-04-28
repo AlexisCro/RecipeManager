@@ -1,12 +1,20 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark mb-4" data-bs-theme="dark">
     <div class='container-fluid'>
-        <p class='logo-name'><%= t('navbar.title') %><p>
+        <p class='logo-name'><%= t('add_recipe') %><p>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
     <div class='collapse navbar-collapse' id="navbar-toggler">
         <ul class="navbar-nav me-auto my-2 my-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= t('navbar.recipes') %>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><%= link_to t('navbar.new_recipe'), new_recipe_path, class: 'dropdown-item' %></li>
+                </ul>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <%= @current_user.full_name %>

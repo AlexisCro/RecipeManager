@@ -1,0 +1,62 @@
+<div class='d-flex justify-content-center align-items-center'>
+    <div class='card-custom w-75'>
+        <div class='border-top-radius card-header text-center' style="background-color:#4a7de9; color:white; border-radius: 15px 15px 0 0;">
+            <h2><%= t('new.add_recipe') %></h2>      
+        </div>
+        <div class='card-body text-bg-light d-flex justify-content-center' style='border-radius: 0 0 15px 15px; color:white'>
+            <div class='form-horizontal w-50'>
+                <%= simple_form_for @recipe, defaults: { required: false } do |f| %>
+                    <div class='input-group mb-3'>
+                        <div class='w-100'>
+                            <%= f.input :name, input_html: { class: 'form-control' }, required: true %>
+                        </div>
+                    </div>
+                    <div class='input-group mb-3'>
+                        <div class='w-100'>
+                            <%= f.input :kind,
+                                        collection: format_select_type,
+                                        input_html: { class: 'form-select' },
+                                        required: true %>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col'>
+                            <div class="form-check form-switch">
+                                <%= f.input :is_vegetarian,
+                                            as: :boolean,
+                                            input_html: { class: 'form-check-input'} %>
+                            </div>
+                        </div>
+                        <div class='col'>
+                            <div class="form-check form-switch">
+                                <%= f.input :is_vegan,
+                                            as: :boolean,
+                                            input_html: { class: 'form-check-input'} %>
+                            </div>
+                        </div>
+                        <div class='col'>
+                            <div class="form-check form-switch">
+                                <%= f.input :is_kids_friendly,
+                                            as: :boolean,
+                                            input_html: { class: 'form-check-input'} %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col'>
+                            <%= f.input :ingredients, input_html: { class: 'form-control' } %> 
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col'>
+                            <%= f.input :ingredients, input_html: { class: 'form-control' } %> 
+                        </div>
+                    </div>
+                    <div class='input-group mb-3 d-flex justify-content-center'>
+                        <%= f.button :submit,  class: 'btn btn-primary mt-2' %>                        
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+en:
+  navbar:
+    recipes: Recipes
+    new_recipe: Add a recipe
+    index_recipe: Show recipes
+  new:
+    add_recipe: Add a new recipe
+    types:
+      blank: no type
+      entry: Entry
+      main: Main dish
+      sweet: Sweet
