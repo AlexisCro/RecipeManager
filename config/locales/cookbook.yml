@@ -1,3 +1,7 @@
 en:
+  navbar:
+    cookbook: My cookbook
   edit:
     cookbook: Edit my cookbook
+    succes: Your cookbook has updated
+    danger: Your cookbook has not edited, it seems something wrong
