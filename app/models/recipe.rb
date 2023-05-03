@@ -2,14 +2,16 @@ class Recipe < ApplicationRecord
 
     belongs_to :cookbook
 
+    has_many :ingredients
+
     PARAMS = %i[
         name
         kind
         is_vegetarian
         is_vegan
         is_kids_friendly
-        ingredients
-    ]
+        cookbook_id
+    ].freeze
 
     enum kind: {
         blank: 0,
