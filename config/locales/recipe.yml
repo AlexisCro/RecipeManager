@@ -2,7 +2,7 @@ en:
   navbar:
     recipes: Recipes
     new_recipe: Add a recipe
-    index_recipe: Show recipes
+    index_recipe: My recipes
   new:
     add_recipe: Add a new recipe
     types:
@@ -10,3 +10,6 @@ en:
       entry: Entry
       main: Main dish
       sweet: Sweet
+  index:
+    title: My Recipes
+    type: Type

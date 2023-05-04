@@ -28,7 +28,8 @@ class RecipesController < ApplicationController
     end
 
     def edit
-
+        @recipe = Recipe.find(params[:id])
+        @cookbook = @recipe.cookbook
     end
 
     def update
