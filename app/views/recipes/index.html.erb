@@ -1,4 +1,4 @@
-<div class='d-flex justify-content-around align-items-center'>
+<div class='d-flex justify-content-around align-items-center flex-wrap'>
     <% @recipes.each do |recipe| %>
         <div class='card bg-light' style="width: 18rem;">
             <div class='card-body'>
@@ -15,12 +15,22 @@
                         </div>
                     </div>
                     <div class='col'>
-                        <div class='btn btn-danger'>
-                            <%= link_to :delete, recipe_path(recipe), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?" }, class: "text-decoration-none text-light" %>
-                        </div>
+                        <%= button_to :delete, recipe_path(recipe), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Do you really want delete this recipe ?"}, class: "btn btn-danger" %>
                     </div>
                 </div>
             </div>
         </div>
     <% end %>
 </div>
+
+<script>
+    let elements = document.querySelectorAll('button[data-turbo-confirm]')
+    elements.forEach(element =>
+        element.addEventListener('click', (e)=> {
+            response = window.confirm('Do you really want delete this recipe ?')
+            if ( response != true ){
+                e.preventDefault()
+            }
+        })
+    )
+</script>
