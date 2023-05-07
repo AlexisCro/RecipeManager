@@ -37,7 +37,14 @@ class RecipesController < ApplicationController
     end
 
     def destroy
-
+        @recipe = Recipe.find(params[:id])
+        if @recipe.delete
+            flash[:success] = "The recipe has been deleted"
+            redirect_back fallback_location: recipes_path
+        else
+            flash[:danger] = "Something wrong"
+            redirect_back fallback_location: recipes_path
+        end
     end
 
     private

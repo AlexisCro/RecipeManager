@@ -13,3 +13,6 @@ en:
   index:
     title: My Recipes
     type: Type
+  edit:
+    ingredients:
+      list: List of the recipe's ingredients
