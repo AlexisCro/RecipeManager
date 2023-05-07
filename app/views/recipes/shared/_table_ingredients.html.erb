@@ -2,6 +2,38 @@
     <div class='border-top-radius card-header text-center' style="background-color:#4a7de9; color:white; border-radius: 15px 15px 0 0;">
         <h2><%= t('edit.ingredients.list') %></h2>      
     </div>
-    <div class='card-body text-bg-light d-flex justify-content-center' style='border-radius: 0 0 15px 15px; color:white'>
+    <div class='card-body text-bg-light d-flex justify-content-around' style='border-radius: 0 0 15px 15px; color:white'>
+      <table class="table">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col"><%= t('list.quantity') %></th>
+            <th scope="col"><%= t('list.unity') %></th>
+            <th scope="col"><%= t('list.ingredient') %></th>
+            <th scope="col" class="d-flex align-items-center justify-content-center"><%= t('list.delete') %></th>
+          </tr>
+        </thead>
+        <% @recipe.ingredients.each do |ingredient| %>
+          <tr>
+            <td><%= ingredient.quantity %></td>
+            <td><%= ingredient.unity %></td>
+            <td><%= ingredient.name %></td>
+            <td  class="d-flex align-items-center justify-content-center">
+              <%= button_to :delete, recipe_ingredient_path(ingredient), method: :delete, data: { turbo_confirm: "Do you really want delete this ingredient ?" }, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
 </div>
+
+<script>
+    let elements = document.querySelectorAll('button[data-turbo-confirm]')
+    elements.forEach(element =>
+        element.addEventListener('click', (e)=> {
+            response = window.confirm('Do you really want delete this ingredient ?')
+            if ( response != true ){
+                e.preventDefault()
+            }
+        })
+    )
+</script>
