@@ -35,22 +35,20 @@ class RecipesController < ApplicationController
     @cookbook = @recipe.cookbook
     if @recipe.update(recipe_params)
       flash[:succes] = "Your recipe has been updated"
-      redirect_back fallback_location: edit_recipe_path
     else
       flash[:danger] = "An error has occured"
-      redirect_back fallback_location: edit_recipe_path
     end
+    redirect_back fallback_location: recipe_path
   end
 
   def destroy
     @recipe = Recipe.find(params[:id])
     if @recipe.delete
       flash[:success] = "The recipe has been deleted"
-      redirect_back fallback_location: recipes_path
     else
       flash[:danger] = "Something wrong"
-      redirect_back fallback_location: recipes_path
     end
+    redirect_back fallback_location: recipes_path
   end
 
   private
