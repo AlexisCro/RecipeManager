@@ -9,18 +9,24 @@
             <th scope="col"><%= t('list.quantity') %></th>
             <th scope="col"><%= t('list.unity') %></th>
             <th scope="col"><%= t('list.ingredient') %></th>
-            <th scope="col" class="d-flex align-items-center justify-content-center"><%= t('list.delete') %></th>
+            <th scope="col"><%= t('list.edit') %></th>
+            <th scope="col"><%= t('list.delete') %></th>
           </tr>
         </thead>
         <% @recipe.ingredients.each do |ingredient| %>
-          <tr>
-            <td><%= ingredient.quantity %></td>
-            <td><%= ingredient.unity %></td>
-            <td><%= ingredient.name %></td>
-            <td  class="d-flex align-items-center justify-content-center">
-              <%= button_to :delete, recipe_ingredient_path(ingredient), method: :delete, data: { turbo_confirm: "Do you really want delete this ingredient ?" }, class: "btn btn-danger" %>
-            </td>
-          </tr>
+          <%= simple_form_for ingredient, url: recipe_ingredient_path(ingredient) do |f| %>
+            <tr>
+              <td><%= f.input :quantity, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
+              <td><%= f.input :unity, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
+              <td><%= f.input :name, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
+              <td>
+                <%= button_to :edit, recipe_ingredient_path(ingredient), class: "btn btn-primary" %>
+              </td>
+          <% end %>
+              <td class="d-flex align-items-center justify-content-center">
+                <%= button_to :delete, recipe_ingredient_path(ingredient), method: :delete, data: { turbo_confirm: "Do you really want delete this ingredient ?" }, class: "btn btn-danger" %>
+              </td>
+            </tr>
         <% end %>
       </table>
     </div>

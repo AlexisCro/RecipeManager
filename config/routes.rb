@@ -24,6 +24,6 @@ Rails.application.routes.draw do
 
   # Recipe CRUD
   resources :recipes do
-    resources :ingredients, only: %i[create edit destroy]
+    resources :ingredients, only: %i[create edit update destroy]
   end
 end

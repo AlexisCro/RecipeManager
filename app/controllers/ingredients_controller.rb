@@ -10,25 +10,35 @@ class IngredientsController < ApplicationController
       flash[:success] = "Your ingredient has been added"
       redirect_back fallback_location: recipe_ingredients_path
     else
-      debugger
       flash[:danger] = "Something wrong"
       redirect_back fallback_location: recipe_ingredients_path
     end
   end
 
-  def edit;end
+  def edit
+    @ingredient = Ingredient.find(params[:recipe_id])
+    @recipe     = @ingredient.recipe
+  end
 
-  def update;end
+  def update
+    @ingredient = Ingredient.find(params[:recipe_id])
+    @recipe     = @ingredient.recipe
+    if @ingredient.update(ingredient_params)
+      flash[:success] = "Ingredient updated"
+    else
+      flash[:danger] = "Something wrong"
+    end
+    redirect_back fallback_location: recipe_ingredients_path
+  end
 
   def destroy
     @ingredient = Ingredient.find(params[:recipe_id])
     if @ingredient.delete
       flash[:success] = "Your ingredient has been deleted"
-      redirect_back fallback_location: recipe_ingredients_path
     else
       flash[:danger] = "Something wrong"
-      redirect_back fallback_location: recipe_ingredients_path
     end 
+    redirect_back fallback_location: recipe_ingredients_path
   end
 
   private
