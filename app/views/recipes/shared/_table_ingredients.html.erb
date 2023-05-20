@@ -34,15 +34,3 @@
 </div>
 
 <% end %>
-
-<script>
-    let elements = document.querySelectorAll('button[data-turbo-confirm]')
-    elements.forEach(element =>
-        element.addEventListener('click', (e)=> {
-            response = window.confirm('Do you really want delete this ingredient ?')
-            if ( response != true ){
-                e.preventDefault()
-            }
-        })
-    )
-</script>
