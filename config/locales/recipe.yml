@@ -4,7 +4,7 @@ en:
     new_recipe: Add a recipe
     index_recipe: My recipes
   new:
-    add_recipe: Add a new recipe
+    add_recipe: Edit a recipe
     types:
       blank: no type
       entry: Entry

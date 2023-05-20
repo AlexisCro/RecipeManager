@@ -6,22 +6,20 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    if @ingredient.save
-      flash[:success] = "Your ingredient has been added"
-      redirect_back fallback_location: recipe_ingredients_path
-    else
+    @recipe = Recipe.find(params[:recipe_id])
+    if !(@ingredient.save)
       flash[:danger] = "Something wrong"
-      redirect_back fallback_location: recipe_ingredients_path
     end
+    render turbo_stream: turbo_stream.replace('table_ingredients', partial: 'recipes/shared/table_ingredients', locals: { recipe: @recipe})
   end
 
   def edit
-    @ingredient = Ingredient.find(params[:recipe_id])
+    @ingredient = Ingredient.find(params[:id])
     @recipe     = @ingredient.recipe
   end
 
   def update
-    @ingredient = Ingredient.find(params[:recipe_id])
+    @ingredient = Ingredient.find(params[:id])
     @recipe     = @ingredient.recipe
     if @ingredient.update(ingredient_params)
       flash[:success] = "Ingredient updated"
@@ -32,7 +30,7 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:recipe_id])
+    @ingredient = Ingredient.find(params[:id])
     if @ingredient.delete
       flash[:success] = "Your ingredient has been deleted"
     else

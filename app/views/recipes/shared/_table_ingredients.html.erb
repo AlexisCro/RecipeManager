@@ -1,3 +1,4 @@
+<%= turbo_frame_tag "table_ingredients" do %>
 <div class='card-custom'>
     <div class='border-top-radius card-header text-center' style="background-color:#4a7de9; color:white; border-radius: 15px 15px 0 0;">
         <h2><%= t('edit.ingredients.list') %></h2>      
@@ -14,23 +15,25 @@
           </tr>
         </thead>
         <% @recipe.ingredients.each do |ingredient| %>
-          <%= simple_form_for ingredient, url: recipe_ingredient_path(ingredient) do |f| %>
+          <%= simple_form_for ingredient, url: recipe_ingredient_path(@recipe, ingredient) do |f| %>
             <tr>
               <td><%= f.input :quantity, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
               <td><%= f.input :unity, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
               <td><%= f.input :name, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
               <td>
-                <%= button_to :edit, recipe_ingredient_path(ingredient), class: "btn btn-primary" %>
+                <%= f.button :submit, t('list.edit'), class: "btn btn-primary" %>
               </td>
           <% end %>
               <td class="d-flex align-items-center justify-content-center">
-                <%= button_to :delete, recipe_ingredient_path(ingredient), method: :delete, data: { turbo_confirm: "Do you really want delete this ingredient ?" }, class: "btn btn-danger" %>
+                <%= button_to :delete, recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { turbo_confirm: "Do you really want delete this ingredient ?" }, class: "btn btn-danger" %>
               </td>
             </tr>
         <% end %>
       </table>
     </div>
 </div>
+
+<% end %>
 
 <script>
     let elements = document.querySelectorAll('button[data-turbo-confirm]')
