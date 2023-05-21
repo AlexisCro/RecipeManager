@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
     @cookbook = current_user.cookbook
     if @recipe.save
       flash[:success] = "Your recipe has been register"
-      render :edit
+      redirect_to edit_recipe_path(@recipe)
     else
       flash[:danger] = "Something wrong"
       redirect_back fallback_location: new_recipe_path

@@ -7,10 +7,10 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     @recipe = Recipe.find(params[:recipe_id])
-    if !(@ingredient.save)
+    unless !(@ingredient.save)
       flash[:danger] = "Something wrong"
     end
-    render turbo_stream: turbo_stream.replace('table_ingredients', partial: 'recipes/shared/table_ingredients', locals: { recipe: @recipe})
+    render turbo_stream: turbo_stream.replace('table_ingredients', partial: 'recipes/shared/table_ingredients', locals: { recipe: @recipe} )
   end
 
   def edit
@@ -21,12 +21,10 @@ class IngredientsController < ApplicationController
   def update
     @ingredient = Ingredient.find(params[:id])
     @recipe     = @ingredient.recipe
-    if @ingredient.update(ingredient_params)
-      flash[:success] = "Ingredient updated"
-    else
+    if !@ingredient.update(ingredient_params)
       flash[:danger] = "Something wrong"
+      redirect_back fallback_location: recipe_ingredients_path
     end
-    redirect_back fallback_location: recipe_ingredients_path
   end
 
   def destroy
