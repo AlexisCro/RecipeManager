@@ -33,9 +33,7 @@ class IngredientsController < ApplicationController
 
   def destroy
     @ingredient = Ingredient.find(params[:id])
-    if @ingredient.delete
-      flash[:success] = "Your ingredient has been deleted"
-    else
+    unless @ingredient.delete
       flash[:danger] = "Something wrong"
     end 
     redirect_back fallback_location: recipe_ingredients_path
