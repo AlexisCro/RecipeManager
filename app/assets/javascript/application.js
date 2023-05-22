@@ -1,2 +1,2 @@
-import 'popper'
-import 'bootstrap'
+//= require popper
+//= require bootstrap
