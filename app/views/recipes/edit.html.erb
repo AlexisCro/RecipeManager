@@ -4,7 +4,9 @@
       <%= render partial: 'recipes/shared/form_recipe' %>
     </div>
     <div class='col'>
-      <%= render partial: 'ingredients/shared/form_ingredient' %>
+      <%= turbo_frame_tag 'ingredient_form' do %>
+        <%= render partial: 'ingredients/shared/form_ingredient' %>
+      <% end %>
       <%= turbo_frame_tag "table_ingredients" do %>
         <%= render partial: 'recipes/shared/table_ingredients' %>
       <% end %>
