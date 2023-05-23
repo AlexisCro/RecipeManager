@@ -32,8 +32,13 @@
             let quantityBase  = quantity.textContent / numberOfPart.value
 
             numberOfPart.addEventListener('input', ()=>{
-                let quantityFinal = quantityBase * numberOfPart.value
-                quantity.innerHTML = Math.round(quantityFinal)
+                let quantityFinal
+                if (numberOfPart.value == 1) {
+                    quantity.innerHTML = Math.ceil(quantityBase)
+                }else{
+                    quantityFinal = quantityBase * numberOfPart.value
+                    quantity.innerHTML = Math.ceil(quantityFinal)
+                }
             })
         })
     })
