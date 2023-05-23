@@ -14,5 +14,6 @@ en:
     title: My Recipes
     type: Type
   edit:
+    edit_recipe: Edit your recipe
     ingredients:
       list: List of the recipe's ingredients
