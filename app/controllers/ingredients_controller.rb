@@ -25,17 +25,15 @@ class IngredientsController < ApplicationController
   def update
     @ingredient = Ingredient.find(params[:id])
     @recipe     = @ingredient.recipe
-    if !@ingredient.update(ingredient_params)
-      flash[:danger] = "Something wrong"
+    unless @ingredient.update(ingredient_params)
+      flash[:danger] = 'Something wrong'
       redirect_back fallback_location: recipe_ingredients_path
     end
   end
 
   def destroy
     @ingredient = Ingredient.find(params[:id])
-    unless @ingredient.delete
-      flash[:danger] = "Something wrong"
-    end 
+    flash[:danger] = 'Something wrong' unless @ingredient.delete
     redirect_back fallback_location: recipe_ingredients_path
   end
 
