@@ -1,0 +1,8 @@
+/* CSS for custom class component */
+
+.input-number-primary {
+    border: solid 3px #9595ce;
+    border-radius: 10px;
+    padding: 5px 15px;
+    text-align: center;
+}

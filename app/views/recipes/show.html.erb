@@ -1,0 +1,40 @@
+<div class="card text-center">
+  <div class="card-header fs-3 bg-primary" style="color: white;">
+    <%= @recipe.name %>
+  </div>
+  <div class="card-body">
+    <div class="d-flex align-items-center justify-content-center flex-column mb-3">
+      <h5 class="card-title">Number of part :</h5>
+      <input id="number-of-part" class="input-number-primary w-20-percent" type="number" value='<%= @recipe.number_of_parts %>'>
+    </div>
+    <h5 class="card-title">Ingredients</h5>
+    <ul class="list-group">
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li class="list-group-item p-2 d-flex">
+          <input class="form-check-input me-2" type="checkbox">
+          <p><span class="ingredient-quantity"><%= ingredient.quantity %></span> <%= ingredient.unity %> <%= ingredient.name %></p>
+        </li>
+      <% end %>
+    </ul>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+
+<script>
+    document.addEventListener('turbo:load', function (){
+        let numberOfPart= document.getElementById('number-of-part')
+        let quantities= document.querySelectorAll('.ingredient-quantity')
+
+        quantities.forEach(quantity => {
+            let quantityBase  = quantity.textContent / numberOfPart.value
+
+            numberOfPart.addEventListener('input', ()=>{
+                let quantityFinal = quantityBase * numberOfPart.value
+                quantity.innerHTML = Math.round(quantityFinal)
+            })
+        })
+    })
+</script>
