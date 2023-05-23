@@ -1,6 +1,6 @@
 <div class='card-custom mb-4'>
   <div class='border-top-radius card-header text-center' style="background-color:#4a7de9; color:white; border-radius: 15px 15px 0 0;">
-    <h2><%= t('edit.edit_recipe') %></h2>
+    <h2><%= t('new.add_recipe') %></h2>
   </div>
   <div class='card-body text-bg-light d-flex justify-content-center' style='border-radius: 0 0 15px 15px; color:white'>
     <div class='form-horizontal w-75 py-2'>
@@ -42,14 +42,6 @@
                           as: :boolean,
                           input_html: { class: 'form-check-input'} %>
             </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <div class="w-100">
-            <%= f.input :number_of_parts,
-                        as: :integer,
-                        required: true,
-                        input_html: { class: 'form-control'} %>
           </div>
         </div>
         <div class='input-group mb-3 d-flex justify-content-center'>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_153309) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_22_141950) do
   create_table "cookbooks", force: :cascade do |t|
     t.string "title", default: "My cookbook", null: false
     t.integer "user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_153309) do
     t.integer "cookbook_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number_of_parts", default: 1, null: false
     t.index ["cookbook_id"], name: "index_recipes_on_cookbook_id"
   end
 
