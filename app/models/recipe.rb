@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   belongs_to :cookbook
 
   has_many :ingredients
+  has_many :instructions
 
   PARAMS = %i[
     name

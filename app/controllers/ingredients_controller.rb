@@ -9,8 +9,12 @@ class IngredientsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     if Ingredient.new(ingredient_params).save
       render turbo_stream: [
-        turbo_stream.replace('table_ingredients', partial: 'recipes/shared/table_ingredients', locals: { recipe: @recipe }),
-        turbo_stream.replace('ingredient_form', partial: 'ingredients/shared/form_ingredient', locals: { ingredient: Ingredient.new })
+        turbo_stream.replace('table_ingredients',
+                             partial: 'recipes/shared/table_ingredients',
+                             locals: { recipe: @recipe }),
+        turbo_stream.replace('ingredient_form',
+                             partial: 'ingredients/shared/form_ingredient',
+                             locals: { ingredient: Ingredient.new })
       ]
     else
       flash[:danger] = 'Something wrong'

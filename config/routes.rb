@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root "users#new"
 
   # Users routes 
-  resources :users, only: %i[new create edit] do 
-    member do 
+  resources :users, only: %i[new create edit] do
+    member do
       get 'confirm'
     end
   end
@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   # Recipe CRUD
   resources :recipes do
     resources :ingredients, only: %i[create edit update destroy]
+    resources :instructions, only: %i[new create edit update destroy]
   end
 end

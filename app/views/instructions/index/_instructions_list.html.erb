@@ -1,0 +1,7 @@
+<div id="instructions_list">
+  <div class="d-flex flex-column">
+    <% instructions.order(:number_of_step).each do |instruction| %>
+      <%= render partial: 'instructions/index/instruction', locals: { instruction: instruction} %>
+    <% end %>
+  </div>
+</div>

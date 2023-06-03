@@ -1,0 +1,16 @@
+<section>
+  <div class="card">
+    <%= turbo_frame_tag 'new_step' do %>
+      <div class="card-body d-flex justify-content-around align-items-center">
+        <%= t('new.add_new_step') %>
+        <%= link_to :new,
+                    new_recipe_instruction_path(@recipe),
+                    data: { turbo_frame: 'instructions_list'},
+                    class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <div>
+      <%= render partial: 'instructions/instructions_list', locals: { instructions: @instructions } %>
+    </div>
+  </div>
+</section>
