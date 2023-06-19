@@ -1,0 +1,10 @@
+en: 
+  form:
+    new:
+      add: add a new ingredient
+  list:
+    quantity: Quantity
+    unity: Unity
+    ingredient: Ingredient
+    delete: Delete
+    save: Save

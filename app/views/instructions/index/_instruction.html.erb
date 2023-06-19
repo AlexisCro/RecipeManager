@@ -1,0 +1,25 @@
+<div id='instruction_<%= instruction.id %>'
+     class="d-flex flex-row justify-content-around align-items-center mb-3 pb-2"
+     style="border-bottom: 1px solid rgba(218,212,212,0.75)">
+  <%= turbo_frame_tag "instruction_edit_#{instruction.id}",
+                      class: 'd-flex flex-row justify-content-around align-items-center w-100 row' do %>
+    <div class="col-2">
+      <%= instruction.number_of_step %>
+    </div>
+    <div style="text-align: center;" class="col-5">
+      <%= instruction.description %>
+    </div>
+    <div class="col">
+      <%= link_to :edit,
+                  edit_recipe_instruction_path(@recipe, instruction),
+                  class: 'btn btn-primary' %>
+    </div>
+    <div class="col">
+      <%= button_to :delete,
+                    recipe_instruction_path(@recipe, instruction),
+                    method: :delete,
+                    data: { turbo_confirm: "Do you really want delete this instruction ?" },
+                    class: "btn btn-danger col" %>
+    </div>
+  <% end %>
+</div>

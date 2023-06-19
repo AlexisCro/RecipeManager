@@ -1,0 +1,55 @@
+<div class="card text-center">
+  <div class="card-header fs-3 bg-primary" style="color: white;">
+    <%= @recipe.name %>
+  </div>
+  <div class="card-body">
+    <div class="d-flex align-items-center justify-content-center flex-column mb-3">
+      <h5 class="card-title">Number of part :</h5>
+      <input id="number-of-part" class="input-number-primary w-20-percent" type="number" value='<%= @recipe.number_of_parts %>'>
+    </div>
+    <h5 class="card-title">Ingredients</h5>
+    <ul class="list-group">
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li class="list-group-item p-2 d-flex">
+          <input class="form-check-input me-2" type="checkbox">
+          <p><span class="ingredient-quantity"><%= ingredient.quantity %></span> <%= ingredient.unity %> <%= ingredient.name %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="card-footer text-muted d-flex justify-content-start flex-wrap">
+    <% @recipe.instructions.each do |instruction| %>
+      <div class="d-flex align-items-center flex-column m-2 border border-primary border border-3 rounded"
+           style="width: 400px;">
+        <div style="font-family: Pacifico, cursive; font-size: 25px;" class="py-2">
+          <%= t('show.step', number: instruction.number_of_step) %>
+        </div>
+        <hr>
+        <div class="p-2" style="font-family: Pacifico, cursive; font-size: 18px;">
+          <%= instruction.description %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('turbo:load', function (){
+        let numberOfPart= document.getElementById('number-of-part')
+        let quantities= document.querySelectorAll('.ingredient-quantity')
+
+        quantities.forEach(quantity => {
+            let quantityBase  = quantity.textContent / numberOfPart.value
+
+            numberOfPart.addEventListener('input', ()=>{
+                let quantityFinal
+                if (numberOfPart.value == 1) {
+                    quantity.innerHTML = Math.ceil(quantityBase)
+                }else{
+                    quantityFinal = quantityBase * numberOfPart.value
+                    quantity.innerHTML = Math.ceil(quantityFinal)
+                }
+            })
+        })
+    })
+</script>

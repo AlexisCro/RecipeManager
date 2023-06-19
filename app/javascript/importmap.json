@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@bootstrap-icons/bootstrap-icons": "https://unpkg.com/@bootstrap-icons/bootstrap-icons@1.5.0/dist/"
+  }
+}
