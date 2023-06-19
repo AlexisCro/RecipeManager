@@ -15,5 +15,8 @@ en:
     type: Type
   edit:
     edit_recipe: Edit your recipe
+    return: Return
     ingredients:
       list: List of the recipe's ingredients
+  show:
+    step: "Step %{number}"

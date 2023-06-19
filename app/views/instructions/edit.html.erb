@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "instruction_edit_#{@instruction.id}" do %>
+  <div>
+    <%= simple_form_for @instruction, url: recipe_instruction_path(@recipe, @instruction) do |f| %>
+      <%= f.input :recipe_id,
+                  as: :hidden,
+                  input_html: { value: @recipe.id } %>
+      <%= f.input :number_of_step,
+                  as: :integer,
+                  input_html: { class: 'form-control  w-50' } %>
+      <%= f.input :description,
+                  as: :text,
+                  input_html: { class: 'form-control',
+                                style: 'height: 100px;' }%>
+      <%= f.button :submit, 'Save', class: 'btn btn-primary m-2' %>
+    <% end %>
+  </div>
+<% end %>

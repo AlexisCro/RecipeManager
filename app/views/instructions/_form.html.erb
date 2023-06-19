@@ -1,0 +1,39 @@
+<!-- http://127.0.0.1:3000/recipes/29/instructions/new -->
+
+<div id="form_step" class="p-2 m-1 d-flex justify-content-center align-items-center flex-column w-100">
+  <h6><%= t('new.add_new_step') %></h6>
+  <div class="w-100">
+    <%= simple_form_for :instruction,
+                        url: recipe_instructions_path(@recipe),
+                        defaults: {
+                          required: false,
+                          input_html: { class: 'w-100' }
+                        } do |f| %>
+      <%= f.input :recipe_id,
+                  as: :hidden,
+                  input_html: { value: @recipe.id } %>
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <div class="input-group d-flex align-items-center justify-content-center">
+          <%= f.input :number_of_step,
+                      as: :integer,
+                      wrapper_html: { class: 'd-flex align-items-center justify-content-center flex-column' },
+                      input_html: { class: 'form-control  w-50',
+                                    value: @recipe.instructions.empty? ? 1 : @recipe.instructions.order(:number_of_step).last.number_of_step + 1 }
+              %>
+        </div>
+        <div class="input-group d-flex align-items-center justify-content-center mb-2 w-100">
+          <%= f.input :description,
+                      as: :text,
+                      wrapper_html: { class: 'w-100' },
+                      input_html: { class: 'form-control w-100',
+                                    style: 'height: 100px;'} %>
+        </div>
+        <%= f.button :submit, 'Add', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <div class="d-flex justify-content-center align-items-center m-2">
+      <%= link_to "return", edit_recipe_path(@recipe), class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>
+
