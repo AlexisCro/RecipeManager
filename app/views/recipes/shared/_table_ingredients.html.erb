@@ -1,0 +1,36 @@
+<%= turbo_frame_tag "table_ingredients" do %>
+<div class='card-custom mb-4'>
+    <div class='border-top-radius card-header text-center' style="background-color:#4a7de9; color:white; border-radius: 15px 15px 0 0;">
+        <h2><%= t('edit.ingredients.list') %></h2>      
+    </div>
+    <div class='card-body text-bg-light d-flex justify-content-around' style='border-radius: 0 0 15px 15px; color:white'>
+      <table class="table">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col"><%= t('list.quantity') %></th>
+            <th scope="col"><%= t('list.unity') %></th>
+            <th scope="col"><%= t('list.ingredient') %></th>
+            <th scope="col"><%= t('list.edit') %></th>
+            <th scope="col"><%= t('list.delete') %></th>
+          </tr>
+        </thead>
+        <% @recipe.ingredients.each do |ingredient| %>
+          <%= simple_form_for ingredient, url: recipe_ingredient_path(@recipe, ingredient) do |f| %>
+            <tr>
+              <td><%= f.input :quantity, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
+              <td><%= f.input :unity, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
+              <td><%= f.input :name, input_html: { class: "form-control" }, label_html: { style: "display: none" } %></td>
+              <td>
+                <%= f.button :submit, t('list.save'), class: "btn btn-primary" %>
+              </td>
+          <% end %>
+              <td class="d-flex align-items-center justify-content-center">
+                <%= button_to :delete, recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { turbo_confirm: "Do you really want delete this ingredient ?" }, class: "btn btn-danger" %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+</div>
+
+<% end %>

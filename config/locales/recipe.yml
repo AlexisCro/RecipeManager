@@ -1,0 +1,22 @@
+en:
+  navbar:
+    recipes: Recipes
+    new_recipe: Add a recipe
+    index_recipe: My recipes
+  new:
+    add_recipe: Edit a recipe
+    types:
+      blank: no type
+      entry: Entry
+      main: Main dish
+      sweet: Sweet
+  index:
+    title: My Recipes
+    type: Type
+  edit:
+    edit_recipe: Edit your recipe
+    return: Return
+    ingredients:
+      list: List of the recipe's ingredients
+  show:
+    step: "Step %{number}"

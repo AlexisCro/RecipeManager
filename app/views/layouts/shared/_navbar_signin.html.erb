@@ -9,12 +9,21 @@
         <ul class="navbar-nav me-auto my-2 my-lg-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= t('navbar.recipes') %>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><%= link_to t('navbar.index_recipe'), recipes_path, class: 'dropdown-item' %></li>
+                    <li><%= link_to t('navbar.new_recipe'), new_recipe_path, class: 'dropdown-item' %></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#profil" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <%= @current_user.full_name %>
                 </a>
-                <ul class='dropdown-menu dropdown-menu-dark'>
+                <ul id="profil" class='dropdown-menu dropdown-menu-dark'>
                     <li><%= button_to t('navbar.logout'), destroy_session_path, method: :delete, data: { turbo: false }, class: 'dropdown-item' %></li>
                     <li><%= link_to t('edit.setting'), profil_path, class: 'dropdown-item' %></li>
-                <ul>
+                </ul>
             </li>
         </ul>
     </div>
