@@ -8,10 +8,8 @@
                     class: "btn btn-primary" %>
       </div>
     <% end %>
-    <% if !@instructions.empty? %>
       <div>
         <%= render partial: 'instructions/index/instructions_list', locals: { instructions: @instructions } %>
       </div>
-    <% end %>
   </div>
 </section>

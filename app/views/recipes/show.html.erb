@@ -17,7 +17,19 @@
       <% end %>
     </ul>
   </div>
-  <div class="card-footer text-muted">
+  <div class="card-footer text-muted d-flex justify-content-start flex-wrap">
+    <% @recipe.instructions.each do |instruction| %>
+      <div class="d-flex align-items-center flex-column m-2 border border-primary border border-3 rounded"
+           style="width: 400px;">
+        <div style="font-family: Pacifico, cursive; font-size: 25px;" class="py-2">
+          <%= t('show.step', number: instruction.number_of_step) %>
+        </div>
+        <hr>
+        <div class="p-2" style="font-family: Pacifico, cursive; font-size: 18px;">
+          <%= instruction.description %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
