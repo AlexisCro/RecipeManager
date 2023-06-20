@@ -17,8 +17,11 @@ class Recipe < ApplicationRecord
 
   enum kind: {
     blank: 0,
+    aperitif: 5,
+    cocktail: 6,
     entry: 10,
     main: 20,
+    sauce: 25,
     sweet: 30
   }
 end

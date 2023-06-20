@@ -10,6 +10,9 @@ en:
       entry: Entry
       main: Main dish
       sweet: Sweet
+      sauce: Sauce
+      aperitif: Aperitif
+      cocktail: Cocktail
   index:
     title: My Recipes
     type: Type
