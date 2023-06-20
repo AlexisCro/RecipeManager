@@ -28,6 +28,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Add gem for form
+gem 'jquery-rails'
+gem 'select2-rails'
 gem 'simple_form'
 
 # translation 
