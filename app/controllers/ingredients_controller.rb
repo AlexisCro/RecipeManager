@@ -29,7 +29,13 @@ class IngredientsController < ApplicationController
   def update
     @ingredient = Ingredient.find(params[:id])
     @recipe     = @ingredient.recipe
-    unless @ingredient.update(ingredient_params)
+    if @ingredient.update(ingredient_params)
+      render turbo_stream: [
+        turbo_stream.replace('table_ingredients',
+                             partial: 'recipes/shared/table_ingredients',
+                             locals: { recipe: @recipe })
+      ]
+    else
       flash[:danger] = 'Something wrong'
       redirect_back fallback_location: recipe_ingredients_path
     end
