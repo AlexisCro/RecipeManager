@@ -1,6 +1,11 @@
 <div class="card text-center">
-  <div class="card-header fs-3 bg-primary" style="color: white;">
-    <%= @recipe.name %>
+  <div class="card-header fs-3 bg-primary d-flex justify-content-center flex-column" style="color: white;">
+    <div class="d-flex justify-content-center align-items-center mb-1">
+      <span><%= @recipe.name %></span>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <%= link_to t('show.edit'), edit_recipe_path(@recipe), class: 'btn btn-light' %>
+    </div>
   </div>
   <div class="card-body">
     <div class="d-flex align-items-center justify-content-center flex-column mb-3">
