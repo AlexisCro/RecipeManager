@@ -4,5 +4,6 @@
 //= require_tree ../../../vendor/javascript
 //= require_tree ../javascript
 //= link_tree ../images/plate_state
+//= link_tree ../images/icon
 //= link application.css
 //= link application.js

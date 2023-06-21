@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
@@ -19,23 +20,30 @@
     <% end %>
 
     <% if flash[:success] %>
+      <% image = image_tag('icon/success', alt: 'icon success', class: 'icon-flash') %>
       <div class='container flash'>
         <div class='alert alert-success alert-flash'>
           <%= flash[:success] %>
         </div>
       </div>
+      <script>
+        addLogoFlash('<%= image %>')
+      </script>
     <% end %>
 
     <% if flash[:danger] %>
+      <% image = image_tag('icon/danger', alt: 'icon danger', class: 'icon-flash') %>
       <div class='container flash'>
         <div class='alert alert-danger alert-flash'>
           <%= flash[:danger] %>
         </div>
       </div>
+      <script>
+        addLogoFlash('<%= image %>')
+      </script>
     <% end %>
 
     <%= yield %>
     <%= turbo_include_tags %>
-
   </body>
 </html>
