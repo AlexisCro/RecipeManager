@@ -1,0 +1,33 @@
+/* Animations custom */
+
+@keyframes display-flash {
+    from {
+        right: -40vw;
+    }
+    to {
+        right: 0vw;
+    }
+}
+
+@keyframes blinking {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        display: block;
+        position: absolute;
+        right: 2vw;
+    }
+    50% {
+        right: -40vw;
+    }
+    100% {
+        right: -40vw;
+    }
+}
