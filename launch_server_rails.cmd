@@ -12,21 +12,21 @@ rem Je définis le chemin de l'application
 set "project=C:\Users\alexi\OneDrive\Documents\Projets\RecipeManager"
 
 rem Je définis une variable pour vérifier la présence ou non d'un PID pour un server qui n'aurait pas été stoppé
-set "server=C:\Users\alexi\OneDrive\Documents\Projets\%app%\tmp\pids\server.pid"
+set "server=C:\Users\alexi\OneDrive\Documents\Projets\RecipeManager\tmp\pids\server.pid"
 
 rem J'appelle ma méthode qui me permet de trouver et/ou lancer mon serveur
-call :findServer "%server%" "%app%" "%project%"
+call :findServer "%server%" "%project%"
 goto :EOF
 
 :findServer
 if exist %1 (
 	del %1
-  start "" cmd.exe /k "echo launch server of %2 && cd /d %3 && rails s"
+  start "" cmd.exe /k "echo launch server of RecipeManager && cd /d %2 && rails s"
   timeout /t 25 > null
   call :launchApp
   curl "http://127.0.0.1:3000/"
 ) else (
-  start "" cmd.exe /k "echo launch server of %2 && cd /d %3 && rails s"
+  start "" cmd.exe /k "echo launch server of RecipeManager && cd /d %2 && rails s"
 	timeout /t 25 > null
   call :launchApp
   curl "http://127.0.0.1:3000/"
