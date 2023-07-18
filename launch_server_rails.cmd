@@ -14,6 +14,9 @@ set "project=C:\Users\alexi\OneDrive\Documents\Projets\RecipeManager"
 rem Je définis une variable pour vérifier la présence ou non d'un PID pour un server qui n'aurait pas été stoppé
 set "server=C:\Users\alexi\OneDrive\Documents\Projets\RecipeManager\tmp\pids\server.pid"
 
+rem Je définis une variable pour ma boucle de vérification du lancement du serveur
+set running=0
+
 rem J'appelle ma méthode qui me permet de trouver et/ou lancer mon serveur
 call :findServer "%server%" "%project%"
 goto :EOF
@@ -22,17 +25,25 @@ goto :EOF
 if exist %1 (
 	del %1
   start "" cmd.exe /k "echo launch server of RecipeManager && cd /d %2 && rails s"
-  timeout /t 25 > null
+  call :serverRunning "%server%" running
   call :launchApp
-  curl "http://127.0.0.1:3000/"
 ) else (
   start "" cmd.exe /k "echo launch server of RecipeManager && cd /d %2 && rails s"
-	timeout /t 25 > null
+  call :serverRunning "%server%" running
   call :launchApp
-  curl "http://127.0.0.1:3000/"
 )
 goto :EOF
 
 :launchApp
 start "" cmd.exe /k "echo launch application && call C:\Users\alexi\OneDrive\Documents\Projets\devops\script\open_app.cmd && exit"
+goto :EOF
+
+:serverRunning
+:loop
+if exist %1 (
+  set /A %2+=1
+)
+if "%running%"=="0" (
+  goto loop
+)
 goto :EOF
