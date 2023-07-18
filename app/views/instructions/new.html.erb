@@ -1,5 +1,7 @@
 <%= turbo_frame_tag 'new_step' do %>
   <div class="d-flex justify-content-center align-items-center mb-2">
-    <%= render partial: 'instructions/form' %>
+    <%= render_which_partial('instructions/form') do %>
+      <%= render partial: 'instructions/form' %>
+    <% end %>
   </div>
 <% end %>

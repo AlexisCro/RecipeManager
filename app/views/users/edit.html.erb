@@ -48,7 +48,9 @@
             </div>
         </div>
         <div class='col'>
+          <%= render_which_partial "users/shared/cookbook" do %>
             <%= render partial: "users/shared/cookbook", locals: { cookbook: current_user.cookbook} %>
+          <% end %>
         </div>
     </div>
 </div>
