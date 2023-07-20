@@ -22,15 +22,11 @@ goto :EOF
 if exist %1 (
 	del %1
   start "" cmd.exe /k "echo launch server of RecipeManager && cd /d %2 && rails s"
-  timeout /t 25 > null
-  call :launchApp
-  curl "http://127.0.0.1:3000/"
 ) else (
   start "" cmd.exe /k "echo launch server of RecipeManager && cd /d %2 && rails s"
-	timeout /t 25 > null
-  call :launchApp
-  curl "http://127.0.0.1:3000/"
 )
+call :serverRunning "%server%"
+call :launchApp
 goto :EOF
 
 :launchApp
