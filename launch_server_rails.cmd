@@ -25,13 +25,11 @@ goto :EOF
 if exist %1 (
 	del %1
   start "" cmd.exe /k "echo launch server of RecipeManager && cd /d %2 && rails s"
-  call :serverRunning "%server%" running
-  call :launchApp
 ) else (
   start "" cmd.exe /k "echo launch server of RecipeManager && cd /d %2 && rails s"
-  call :serverRunning "%server%" running
-  call :launchApp
 )
+call :serverRunning "%server%"
+call :launchApp
 goto :EOF
 
 :launchApp
@@ -41,9 +39,9 @@ goto :EOF
 :serverRunning
 :loop
 if exist %1 (
-  set /A %2+=1
+  set /A running+=1
 )
-if "%running%"=="0" (
+if %running%==0 (
   goto loop
 )
 goto :EOF

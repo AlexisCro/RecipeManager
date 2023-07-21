@@ -5,16 +5,24 @@
   <div class='row px-5'>
     <div class='col'>
       <div class="mb-3">
-        <%= render partial: 'recipes/shared/form_recipe' %>
-        <%= render partial: 'instructions/index/index' %>
+        <%= render_which_partial 'recipes/shared/form_recipe' do %>
+          <%= render partial: 'recipes/shared/form_recipe' %>
+        <% end %>
+        <%= render_which_partial 'instructions/index/index' do %>
+          <%= render partial: 'instructions/index/index' %>
+        <% end %>
       </div>
     </div>
     <div class='col'>
       <%= turbo_frame_tag 'ingredient_form' do %>
-        <%= render partial: 'ingredients/shared/form_ingredient' %>
+        <%= render_which_partial('ingredients/shared/form_ingredient') do %>
+          <%= render partial: 'ingredients/shared/form_ingredient' %>
+        <% end %>
       <% end %>
       <%= turbo_frame_tag 'table_ingredients' do %>
-        <%= render partial: 'recipes/shared/table_ingredients' %>
+        <%= render_which_partial('recipes/shared/table_ingredients') do %>
+          <%= render partial: 'recipes/shared/table_ingredients' %>
+        <% end %>
       <% end %>
       </div>
   </div>
